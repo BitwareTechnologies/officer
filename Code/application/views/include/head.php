@@ -5,7 +5,7 @@
     <meta name="description" content="Blankon is a theme fullpack admin template powered by Twitter bootstrap 3 front-end framework. Included are multiple example pages, elements styles, and javascript widgets to get your project started.">
     <meta name="keywords" content="">
     <meta name="author" content="Djava UI">
-    <title>WELCOME | BLANKON - Fullpack Admin Theme</title>
+    <title><?php if($title) { echo $title; } else { echo 'Admin Panel'; }?></title>
     <!--/ END META SECTION -->
 
     <!-- START @FAVICONS -->

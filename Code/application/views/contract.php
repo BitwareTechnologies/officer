@@ -69,11 +69,11 @@ START @BODY
         <!-- View files to load -->
         <!-- Start page header -->
 <div class="header-content">
-    <h2><i class="fa fa-home"></i>Dashboard <span>dashboard & statistics</span></h2>
+    <h2><i class="fa fa-home"></i>Contract <span>Upload Contract</span></h2>
     <div class="breadcrumb-wrapper hidden-xs">
         <span class="label">You are here:</span>
         <ol class="breadcrumb">
-            <li class="active">Dashboard</li>
+            <li class="active">Contract</li>
         </ol>
     </div>
 </div><!-- /.header-content -->
@@ -81,6 +81,48 @@ START @BODY
 
 <!-- Start body content -->
 <div class="body-content animated fadeIn">
+    <div class="row">
+        <div class="col-md-6">
+            <!-- Start file input - basic form -->
+            <div class="panel rounded shadow">
+                <div class="panel-heading">
+                    <div class="pull-left">
+                        <h3 class="panel-title">File Input</h3>
+                    </div>
+                    <div class="pull-right">
+                        <button class="btn btn-sm" data-container="body" data-action="collapse" data-toggle="tooltip" data-placement="top" data-title="Collapse" data-original-title="" title=""><i class="fa fa-angle-up"></i></button>
+                        <button class="btn btn-sm" data-container="body" data-action="remove" data-toggle="tooltip" data-placement="top" data-title="Remove" data-original-title="" title=""><i class="fa fa-times"></i></button>
+                    </div>
+                    <div class="clearfix"></div>
+                </div><!-- /.panel-heading -->                
+                <div class="panel-body no-padding">
+                    <h4 style="text-align: center;"><?php echo $message; ?></h4>
+                    <form action="<?php echo base_url();?>index.php/contract/do_upload" method="post" enctype="multipart/form-data">
+                        <div class="form-body">
+                            <div class="form-group">
+                                <label class="control-label">File input widget type 1</label>
+                                <div class="fileinput fileinput-new input-group" data-provides="fileinput">
+                                    <div class="form-control" data-trigger="fileinput"><i class="glyphicon glyphicon-file fileinput-exists"></i> <span class="fileinput-filename"></span></div>
+                                    <span class="input-group-addon btn btn-success btn-file"><span class="fileinput-new">Select file</span><span class="fileinput-exists">Change</span><input name="contact_copy" type="file"></span>
+                                    <a href="#" class="input-group-addon btn btn-danger fileinput-exists" data-dismiss="fileinput">Remove</a>
+                                </div>
+                            </div><!-- /.form-group -->                           
+                        </div><!-- /.form-body -->
+                        <div class="form-footer">
+                            <div class="pull-right">
+                                <button class="btn btn-danger mr-5">Cancel</button>
+                                <button class="btn btn-success" type="submit">Submit</button>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div><!-- /.form-footer -->
+                    </form>
+
+                </div><!-- /.panel-body -->
+            </div><!-- /.panel -->
+            <!-- End file input - basic form -->
+
+        </div>                        
+    </div>
 </div>
 <!--/ End body content -->
 

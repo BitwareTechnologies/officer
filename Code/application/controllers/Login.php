@@ -26,6 +26,9 @@ class Login extends CI_Controller {
 	
     public function index()
     {
+        add_css(array('sign.css'));
+        add_js(array('retina.min.js','jquery.validate.min.js','blankon.sign.js'));
+        
         $data = array(
                 'message' => ''
             );
@@ -33,6 +36,9 @@ class Login extends CI_Controller {
     }
     public function checkValidUser()
     {
+        add_css(array('sign.css'));
+        add_js(array('retina.min.js','jquery.validate.min.js','blankon.sign.js'));
+        
         $this->form_validation->set_rules('user_email', '<b>Username</b>', 'required');
         $this->form_validation->set_rules('user_password', '<b>Password</b>', 'required');
 

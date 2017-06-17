@@ -313,12 +313,6 @@
 </li><!-- /.dropdown navbar-profile -->
 <!--/ End profile -->
 
-<!-- Start settings -->
-<li class="navbar-setting pull-right">
-    <a href="javascript:void(0);"><i class="fa fa-cog fa-spin"></i></a>
-</li><!-- /.navbar-setting pull-right -->
-<!--/ End settings -->
-
 </ul><!-- /.navbar-right -->
 <!--/ End right navigation -->
 
