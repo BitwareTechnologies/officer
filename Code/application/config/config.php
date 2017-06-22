@@ -24,7 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 $config['base_url'] = 'http://localhost/officer/';
-$config['header_css'] = array('bootstrap.min.css','font-awesome.min.css','animate.min.css','reset.css','layout.css','components.css','plugins.css','custom.css','sections.css','default.theme.css');
+$config['header_css'] = array('bootstrap.min.css','font-awesome.min.css','layout.css','components.css','default.theme.css');
 $config['header_js'] = array('jquery.min.js','jquery.cookie.js','bootstrap.min.js','jquery.easing.1.3.min.js');
 
 /*

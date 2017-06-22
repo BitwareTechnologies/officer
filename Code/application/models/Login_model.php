@@ -3,7 +3,7 @@ class login_model extends CI_Model
 {
     public function checkUser($user_email, $user_password)
     {
-        $this->db->select('user_id');
+        $this->db->select('*');
         $this->db->from('tbl_user');
         $this->db->where('user_email', $user_email);
         $this->db->where('user_password', $user_password);

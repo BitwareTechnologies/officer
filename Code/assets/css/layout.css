@@ -175,6 +175,19 @@ body.page-header-fixed .header-right {
   right: 0px;
   left: 220px;
 }
+body.page-header-fixed .header-full {
+  right: 0px;
+  left: 0px;
+  background-color: #383f51;
+  width: 100%;
+}
+body.page-header-fixed .header-full {
+    float: left;
+}
+body.page-header-fixed .header-full .logo{
+    padding: 20px;
+}
+
 body.page-header-fixed.page-sidebar-minimize .header-right, body.page-header-fixed.page-sidebar-minimize-auto .header-right {
   left: 0px;
 }
@@ -587,13 +600,20 @@ body.page-footer-fixed.page-sidebar-minimize #page-content .footer-content, body
   left: 75px;
 }
 body.page-footer-fixed #page-content .body-content {
-  margin-bottom: 40px;
+
 }
 body.page-footer-fixed #page-content .footer-content {
   position: fixed;
   bottom: 0;
   right: 0;
   left: 220px;
+  z-index: 1000;
+}
+body.page-footer-fixed #page-content .footer-full {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0px;
   z-index: 1000;
 }
 body.page-footer-fixed #back-top {
@@ -617,7 +637,7 @@ body.page-footer-fixed #back-top {
  * HEADER
  * ======================================================================== */
 #header {
-  height: 50px;
+  height: 85px;
   margin-bottom: 0;
   border: none;
   position: relative;
@@ -1521,7 +1541,6 @@ body.page-footer-fixed #back-top {
  * ======================================================================== */
 #page-content {
   background-color: #F3F3F4;
-  margin-left: 220px;
   z-index: 100;
 }
 
@@ -1662,12 +1681,66 @@ body.page-footer-fixed #back-top {
  * BODY CONTENT
  * ======================================================================== */
 .body-content {
-  background-color: #eeeeef;
-  padding: 20px;
+  background-color: #eeeeef;  
   min-height: inherit;
   position: relative;
 }
+.body-content .left{
+    background: url('../images/homepage-left.png') no-repeat center center fixed;
+    background-size: cover;    
+    width: 50%;    
+    float: left;    
+}
+.body-content .left .office-space{    
+    position: relative;
+    margin: 300px 200px;
+}
+.body-content .left .office-space .office-title{
+    color: #fff;
+    font-family: "calibri";
+    text-align: center;
+    font-size: 16px;
+}
+.body-content .left .office-space .office-search input{
+    border-radius: 10px;
+    border: none;
+}
+.body-content .right{
+    background: url('../images/homepage-right.png') no-repeat center center fixed;
+    background-size: cover;    
+    width: 50%;    
+    float: right;    
+}
+.body-content .right .contract{    
+    position: relative;
+    margin: 252px 200px;
+}
 
+.body-content .right .contract .contract-title{
+    color: #fff;
+    font-family: "calibri";
+    text-align: center;
+    font-size: 16px;
+}
+.body-content .right .contract .upload-your-contract{
+    background-color: #383f51;
+    padding: 10px;
+    color: #fff;
+}
+.body-content .right .contract .upload-your-contract .message{
+    display: block;
+    padding-bottom: 10px;
+}
+.body-content .right .contract .upload-your-contract .fileinput{
+    margin: 0px;
+}
+.body-content .right .contract .upload-your-contract .upload-contract{
+    background: none;
+    border-color: #fff;
+    border-radius: 40px;
+    border-width: 2px;
+    font-size: 20px;    
+}
 /* ========================================================================
  * FOOTER CONTENT
  * ======================================================================== */

@@ -30,10 +30,10 @@ class Login extends CI_Controller {
         add_js(array('retina.min.js','jquery.validate.min.js','blankon.sign.js'));
         
         $data = array(
-            'title' => 'Officer Login',
-            'message' => ''
+                'title' => 'Admin Login',
+                'message' => ''
             );
-            $this->load->view('login', $data);
+            $this->load->view('admin/login', $data);
     }
     public function checkValidUser()
     {
@@ -46,10 +46,10 @@ class Login extends CI_Controller {
         if ($this->form_validation->run() == FALSE)
         {
             $data = array(
-                'title' => 'Officer Login',
+                'title' => 'Admin Login',
                 'message' => 'Please enter Valid Credentials'
             );
-            $this->load->view('login', $data); 
+            $this->load->view('admin/login', $data); 
         }
         else
         {
@@ -57,28 +57,15 @@ class Login extends CI_Controller {
                 $user_password = $_POST['user_password'];
 
                 $result = $this->login_model->checkUser($user_email, $user_password);
-                
+
                 if($result)
                 {                    
-                    $session_data = array(
-                        'user_id'           => $result[0]->user_id,
-                        'user_first_name'   => $result[0]->user_first_name,
-                        'user_last_name'    => $result[0]->user_last_name,
-                        'user_email'        => $result[0]->user_email,                            
-                        'is_user_login' => true,                       
-                        'user_role_id'  => $result[0]->user_role_id
-                    );
-                    $this->session->set_userdata($session_data);                    
-                    
-                    redirect('dashboard');
+                        $this->session->set_userdata('user_id',$result[0]->user_id);                    
+                        redirect(base_url('index.php/admin/dashboard'));
                 }
                 else
-                {                                      
-                    $data = array(
-                        'title' => 'Officer Login',
-                        'message' => 'Please enter Valid Credentials'
-                    );
-                    $this->load->view('login', $data);
+                {
+                        redirect(base_url('index.php/login/index/fail'));
                 }
         }
     }

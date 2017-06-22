@@ -43,7 +43,7 @@ class Dashboard extends MY_Controller {
             }
             else
             {
-                redirect(base_url('index.php/login/index/expire'));
+                redirect('login');
             }
 	}
 }

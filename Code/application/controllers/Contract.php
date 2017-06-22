@@ -18,33 +18,43 @@ class Contract extends MY_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
+        function __construct()
+	{
+            parent::__construct();
+            $this->load->model('contract_model');
+  	}
 	public function index()
-	{            
-            add_css(array('bootstrap-tagsinput.css','jasny-bootstrap-fileinput.min.css','chosen.min.css'));
-            add_js(array('handlebars.js','typeahead.bundle.min.js','jquery.nicescroll.min.js','index.js','bootbox.js','bootstrap-tagsinput.min.js','jasny-bootstrap.fileinput.min.js','holder.js','bootstrap-maxlength.min.js','jquery.autosize.min.js','chosen.jquery.min.js','apps.js','blankon.form.element.js','demo.js'));
-            $data = array(
-                // Set title page
-                'title' => 'Contracts',
-                // Set CSS plugins
+	{
+            if (!$this->session->userdata('is_user_login')) {
+                redirect('login');
+            } else {
+                add_css(array('bootstrap-tagsinput.css','jasny-bootstrap-fileinput.min.css','chosen.min.css'));
+                add_js(array('handlebars.js','typeahead.bundle.min.js','jquery.nicescroll.min.js','index.js','bootbox.js','bootstrap-tagsinput.min.js','jasny-bootstrap.fileinput.min.js','holder.js','bootstrap-maxlength.min.js','jquery.autosize.min.js','chosen.jquery.min.js','apps.js','blankon.form.element.js','demo.js'));
+                $data = array(
+                    // Set title page
+                    'title' => 'Contracts',
+                    // Set CSS plugins
 
-                // Active menu on sidebar left
-                'active_contract'=>'active',
-                // Page Content            
-                'message' => ''
-            );
+                    // Active menu on sidebar left
+                    'active_contract'=>'active',
+                    // Page Content            
+                    'message' => ''
+                );
 
-            $this->load->view('contract', $data);         
+                $this->load->view('contract', $data);
+            }
 	}
         public function do_upload()
         {
             add_css(array('bootstrap-tagsinput.css','jasny-bootstrap-fileinput.min.css','chosen.min.css'));
             add_js(array('handlebars.js','typeahead.bundle.min.js','jquery.nicescroll.min.js','index.js','bootbox.js','bootstrap-tagsinput.min.js','jasny-bootstrap.fileinput.min.js','holder.js','bootstrap-maxlength.min.js','jquery.autosize.min.js','chosen.jquery.min.js','apps.js','blankon.form.element.js','demo.js'));
             
+            $config['file_name']          = $_FILES['contact_copy']['name'];
             $config['upload_path']          = './contract_files/';
             $config['allowed_types']        = 'pdf|doc|docx|xls|xlsx';            
 
             $this->load->library('upload', $config);
-
+            
             if ( ! $this->upload->do_upload('contact_copy'))
             {
                 $data = array(
@@ -57,6 +67,8 @@ class Contract extends MY_Controller {
             }
             else
             {
+                $result = $this->contract_model->uploadContract($this->upload->data('file_name'), $this->session->userdata['user_id']);
+                
                 $data = array(
                     'title' => 'Contracts',
                     'active_contract'=>'active',

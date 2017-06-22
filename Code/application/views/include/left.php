@@ -8,8 +8,7 @@
             <i class="online"></i>
         </a>
         <div class="media-body">
-            <h4 class="media-heading">Hello, <span>Lee</span></h4>
-            <small>Web Designer</small>
+            <h4 class="media-heading">Hello, <span><?php echo $_SESSION['user_first_name']?></span></h4>            
         </div>
     </div>
 </div><!-- /.sidebar-content -->
