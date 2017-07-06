@@ -1,11 +1,14 @@
-<header id="header">
-<!-- Start header right -->
-<div class="header-full">
-    <!-- Start navbar toolbar -->    
-    <div class="logo">
-        <img src="<?php echo base_url(); ?>assets/images/logo-white.png" width="150" alt=""/>
-    </div>    
-    <!--/ End navbar toolbar -->
-</div><!-- /.header-right -->
-<!--/ End header left -->
-</header> <!-- /#header -->
+<div class="navbar-wrapper">
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container">
+                <div class="navbar-header page-scroll">                    
+                    <a class="navbar-brand" href="#"><img src="<?php echo base_url();?>assets/img/logo-white.png" width="200"></a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav navbar-right">                        
+                        <li><a class="page-scroll" href="#">Signup</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+</div>

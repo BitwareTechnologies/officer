@@ -21,25 +21,19 @@ class Login extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('login_model');
+        $this->load->model('admin/login_model');
     }
 	
     public function index()
-    {
-        add_css(array('sign.css'));
-        add_js(array('retina.min.js','jquery.validate.min.js','blankon.sign.js'));
-        
+    {        
         $data = array(
-                'title' => 'Admin Login',
-                'message' => ''
-            );
-            $this->load->view('admin/login', $data);
+            'title' => 'Admin Login',
+            'message' => ''
+        );
+        $this->load->view('admin/login', $data);
     }
     public function checkValidUser()
     {
-        add_css(array('sign.css'));
-        add_js(array('retina.min.js','jquery.validate.min.js','blankon.sign.js'));
-        
         $this->form_validation->set_rules('user_email', '<b>Username</b>', 'required');
         $this->form_validation->set_rules('user_password', '<b>Password</b>', 'required');
 
@@ -55,23 +49,38 @@ class Login extends CI_Controller {
         {
                 $user_email = $_POST['user_email'];
                 $user_password = $_POST['user_password'];
-
+                
                 $result = $this->login_model->checkUser($user_email, $user_password);
-
+                
+                $session_data = array(
+                    'user_id'       =>  $result[0]->user_id,
+                    'user_role_id'  =>  $result[0]->user_role_id,
+                    'user_first_name'  =>  $result[0]->user_first_name,
+                    'user_last_name'  =>  $result[0]->user_last_name,
+                    'user_email'  =>  $result[0]->user_email
+                );
                 if($result)
                 {                    
-                        $this->session->set_userdata('user_id',$result[0]->user_id);                    
-                        redirect(base_url('index.php/admin/dashboard'));
+                    $this->session->set_userdata($session_data);                    
+                    redirect(base_url('index.php/admin/dashboard'));
                 }
                 else
                 {
-                        redirect(base_url('index.php/login/index/fail'));
+                    $data = array(
+                        'title' => 'Admin Login',
+                        'message' => 'Please enter Valid Credentials'
+                    );
+                    $this->load->view('admin/login', $data); 
                 }
         }
     }
     public function signout()
     {            
         $this->session->unset_userdata('user_id');
-        redirect(base_url('index.php/login'));
+        $data = array(
+            'title' => 'Admin Login',
+            'message' => 'Successfully Logged out'
+        );
+        $this->load->view('admin/login', $data);
     }
 }

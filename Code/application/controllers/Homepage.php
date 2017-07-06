@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Homepage extends MY_Controller {
+class Homepage extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -24,20 +24,20 @@ class Homepage extends MY_Controller {
         $this->load->model('homepage_model');
     }
     public function index()
-    {            
-        add_css(array('jasny-bootstrap-fileinput.min.css'));
-        add_js(array('jasny-bootstrap.fileinput.min.js'));
+    {
+        add_css(array('plugins/jasny/jasny-bootstrap.min.css'));
+        add_js(array('jquery-3.1.1.min.js','plugins/jasny/jasny-bootstrap.min.js'));
         $data = array(                
-            'title' => 'Officer',
+            'title' => 'Officer - Homepage',
             'message'=>''                
         );
 
         $this->load->view('homepage', $data);
     }
     public function do_upload()
-    { 
-        add_css(array('jasny-bootstrap-fileinput.min.css'));
-        add_js(array('jasny-bootstrap.fileinput.min.js'));
+    {       
+        add_css(array('plugins/jasny/jasny-bootstrap.min.css'));
+        add_js(array('jquery-3.1.1.min.js','plugins/jasny/jasny-bootstrap.min.js'));
 
         $config['file_name']          = $_FILES['contact_copy']['name'];
         $config['upload_path']          = './contract_files/';
@@ -48,20 +48,18 @@ class Homepage extends MY_Controller {
         if ( ! $this->upload->do_upload('contact_copy'))
         {
             $data = array(
-                'title' => 'Contracts',
-                'message' => 'Please select file',
-                'active_contract'=>'active'
+                'title' => 'Officer - Homepage',
+                'message' => 'Please select file',                
             );
 
             $this->load->view('homepage', $data);
         }
         else
         {
-            $result = $this->homepage_model->uploadContract($this->upload->data('file_name'), $this->session->userdata['user_id']);
+            $result = $this->homepage_model->uploadContract($this->upload->data('file_name'));
 
             $data = array(
-                'title' => 'Contracts',
-                'active_contract'=>'active',
+                'title' => 'Officer - Homepage',                
                 'message' => 'File Uploaded Successfully'
             );
 
