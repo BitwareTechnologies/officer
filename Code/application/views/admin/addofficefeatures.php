@@ -38,11 +38,11 @@
                             <div class="ibox-content">
                                 <form class="form-horizontal" action="<?php echo base_url();?>index.php/admin/officefeatures/insertofficefeatures" method="post">                                    
                                     <div class="form-group"><label class="col-lg-4 control-label">Office Feature</label>
-                                        <div class="col-lg-8"><input type="text" placeholder="Office Feature" value="" name="office_feature_name" class="form-control" ></div>
+                                        <div class="col-lg-8"><input type="text" placeholder="Office Feature" value="" name="feature_name" class="form-control" ></div>
                                     </div>                                    
                                     <div class="form-group">
                                         <div class="col-lg-offset-4 col-lg-8">
-                                            <button class="btn btn-sm btn-white" type="submit">Add</button>
+                                            <button class="btn btn-sm btn-white" type="submit">Add Feature</button>
                                         </div>
                                     </div>
                                 </form>
@@ -50,13 +50,13 @@
                             <?php } else { ?>
                             <div class="ibox-content">
                                 <form class="form-horizontal" action="<?php echo base_url();?>index.php/admin/officefeatures/updateofficefeatures" method="post">
-                                    <input type="hidden" name="office_feature_id" value="<?php echo $officeFeatureData['office_feature_id']?>">
+                                    <input type="hidden" name="feature_id" value="<?php echo $officeFeatureData['feature_id']?>">
                                     <div class="form-group"><label class="col-lg-4 control-label">Office Feature</label>
-                                        <div class="col-lg-8"><input type="text" placeholder="Office Feature" value="<?php echo $officeFeatureData['office_feature_name']?>" name="office_feature_name" class="form-control" ></div>
+                                        <div class="col-lg-8"><input type="text" placeholder="Office Feature" value="<?php echo $officeFeatureData['feature_name']?>" name="feature_name" class="form-control" ></div>
                                     </div>                                    
                                     <div class="form-group">
                                         <div class="col-lg-offset-4 col-lg-8">
-                                            <button class="btn btn-sm btn-white" type="submit">Add</button>
+                                            <button class="btn btn-sm btn-white" type="submit">Sign in</button>
                                         </div>
                                     </div>
                                 </form>

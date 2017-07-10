@@ -49,10 +49,10 @@
                                 <tbody>
                                     <?php foreach ($officeFeatureData as $officeFeatureRow) {?>
                                     <tr class="gradeX">
-                                        <td><?php echo $officeFeatureRow->office_feature_name; ?></td>                                        
+                                        <td><?php echo $officeFeatureRow->feature_name; ?></td>                                        
                                         <td class="center">
-                                            <a href="<?php echo base_url();?>index.php/admin/officefeatures/updateOfficeFeatures/<?php echo $officeFeatureRow->office_feature_id;?>" class="h4"><i class="fa fa-pencil-square-o"></i></a>
-                                            <a href="<?php echo base_url();?>index.php/admin/officefeatures/deleteOfficeFeatures/<?php echo $officeFeatureRow->office_feature_id;?>" class="h4"><i class="fa fa-minus-square-o"></i></a>
+                                            <a href="<?php echo base_url();?>index.php/admin/officefeatures/updateOfficeFeatures/<?php echo $officeFeatureRow->feature_id;?>" class="h4"><i class="fa fa-pencil-square-o"></i></a>
+                                            <a href="<?php echo base_url();?>index.php/admin/officefeatures/deleteOfficeFeatures/<?php echo $officeFeatureRow->feature_id;?>" class="h4"><i class="fa fa-minus-square-o"></i></a>
                                         </td>
                                     </tr>
                                     <?php }?>

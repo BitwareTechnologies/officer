@@ -4,31 +4,31 @@ class officefeature_model extends CI_Model
     public function listOfficeFeatures()
     {
         $this->db->select('*');
-        $this->db->from('tbl_office_feature');
-        $this->db->order_by('office_feature_id','asc');        
+        $this->db->from('tbl_features');
+        $this->db->order_by('feature_id','asc');        
         $query = $this->db->get();        
         return $query->result();
     }
-    public function showOfficeFeature($office_feature_id)
+    public function showOfficeFeature($feature_id)
     {        
-	$result = $this->db->get_where('tbl_office_feature', array('office_feature_id' => $office_feature_id));        
+	$result = $this->db->get_where('tbl_features', array('feature_id' => $feature_id));        
 	return $result->row_array();
     }
-    public function insertOfficeFeature($office_feature_name,$created_at,$created_by)
+    public function insertOfficeFeature($feature_name,$created_at,$created_by)
     {        
-        $data = array('office_feature_name'=>$office_feature_name, 'created_at'=>$created_at, 'created_by'=>$created_by );
-	return($this->db->insert('tbl_office_feature',$data));
+        $data = array('feature_name'=>$feature_name, 'created_at'=>$created_at, 'created_by'=>$created_by );
+	return($this->db->insert('tbl_features',$data));
     }
-    public function updateOfficeFeature($office_feature_id, $office_feature_name, $updated_at, $updated_by)
+    public function updateOfficeFeature($feature_id, $feature_name, $updated_at, $updated_by)
     {
-        $data = array('office_feature_name'=>$office_feature_name, 'updated_at'=>$updated_at, 'updated_by'=>$updated_by);
-        $this->db->where('office_feature_id', $office_feature_id);
-        return($this->db->update('tbl_office_feature',$data));
+        $data = array('feature_name'=>$feature_name, 'updated_at'=>$updated_at, 'updated_by'=>$updated_by);
+        $this->db->where('feature_id', $feature_id);
+        return($this->db->update('tbl_features',$data));
     }
-    public function deleteOfficeFeature($office_feature_id)
+    public function deleteOfficeFeature($feature_id)
     {
-        $this->db->where('office_feature_id', $office_feature_id);
-        return($this->db->delete('tbl_office_feature'));
+        $this->db->where('feature_id', $feature_id);
+        return($this->db->delete('tbl_features'));
     }
 }
 ?>

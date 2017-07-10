@@ -21,7 +21,6 @@ class Officefeatures extends MY_Controller {
     public function __construct()
     {
         parent::__construct();
-        error_reporting(0);
         $this->load->model('admin/officefeature_model');
     }
     public function index()
@@ -61,7 +60,7 @@ class Officefeatures extends MY_Controller {
     }
     public function insertOfficeFeatures()
     {
-        $this->form_validation->set_rules('office_feature_name', '<b>Office Feature</b>', 'required');
+        $this->form_validation->set_rules('feature_name', '<b>Office Feature</b>', 'required');
 
         if ($this->form_validation->run() == FALSE)
         {                
@@ -69,11 +68,11 @@ class Officefeatures extends MY_Controller {
         }
         else
         {
-            $office_feature_name = $_POST['office_feature_name'];
+            $feature_name = $_POST['feature_name'];
             $created_at = date('Y-m-d H:i:s');
             $created_by = $this->session->userdata('user_id');
 
-            $result = $this->officefeature_model->insertOfficeFeature($office_feature_name, $created_at, $created_by);           
+            $result = $this->officefeature_model->insertOfficeFeature($feature_name, $created_at, $created_by);           
             
             $data = array(                    
                 'title' => 'Office Features Add',
@@ -84,11 +83,11 @@ class Officefeatures extends MY_Controller {
             $this->load->view('admin/officefeatures', $data);
         }
     }
-    public function updateofficefeatures($office_feature_id)
+    public function updateofficefeatures($feature_id)
     {
-        if(isset($_POST['office_feature_id']))
+        if(isset($_POST['feature_id']))
         {
-            $this->form_validation->set_rules('office_feature_name', '<b>Office Feature</b>', 'required');
+            $this->form_validation->set_rules('feature_name', '<b>Office Feature</b>', 'required');
 
                 if ($this->form_validation->run() == FALSE)
                 {
@@ -96,21 +95,14 @@ class Officefeatures extends MY_Controller {
                 }
                 else
                 {                        
-                    $office_feature_id = $_POST['office_feature_id'];
-                    $office_feature_name = $_POST['office_feature_name'];
+                    $feature_id = $_POST['feature_id'];
+                    $feature_name = $_POST['feature_name'];
                     $updated_at = date('Y-m-d H:i:s');
                     $updated_by = $this->session->userdata('user_id');
 
-                    $result = $this->officefeature_model->updateOfficeFeature($office_feature_id, $office_feature_name, $updated_at, $updated_by);
-                    $data = array(                    
-	                'title' => 'Office Features List',
-	                'active_office_features'=>'active',
-	                'officeFeatureData' => $this->officefeature_model->listOfficeFeatures(),
-	                'message' => 'Office Feature Updated Successfully'
-	            );
-	            $this->load->view('admin/officefeatures', $data);
+                    $result = $this->officefeature_model->updateOfficeFeature($feature_id, $feature_name, $updated_at, $updated_by);			
                     
-                    //redirect('admin/officefeatures');
+                    redirect('admin/officefeatures');
                 }
         }
         else 
@@ -118,22 +110,15 @@ class Officefeatures extends MY_Controller {
             $data = array(                    
                 'title' => 'Office Features Update',
                 'active_office_features'=>'active',
-                'officeFeatureData' => $this->officefeature_model->showOfficeFeature($office_feature_id),
+                'officeFeatureData' => $this->officefeature_model->showOfficeFeature($feature_id),
                 'message' => 'Office Feature Updated Successfully'
             );
             $this->load->view('admin/addofficefeatures',$data);
         }            
     }
-    public function deleteOfficeFeatures($office_feature_id)
+    public function deleteOfficeFeatures($feature_id)
     {		
-        $result = $this->officefeature_model->deleteOfficeFeature($office_feature_id);        
-        $data = array(                    
-                'title' => 'Office Features List',
-	        'active_office_features'=>'active',
-	        'officeFeatureData' => $this->officefeature_model->listOfficeFeatures(),
-	        'message' => 'Office Feature Deleted Successfully'
-	    );
-	    $this->load->view('admin/officefeatures', $data);
-        //redirect(base_url('index.php/admin/officefeatures'));
+        $result = $this->officefeature_model->deleteOfficeFeature($feature_id);        
+        redirect(base_url('index.php/admin/officefeatures'));
     }
 }

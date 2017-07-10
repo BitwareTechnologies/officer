@@ -14,7 +14,7 @@
         </div>
     </div>
     <div class="col-md-6">        
-        <div class="contract" align="center">
+        <div class="contract">
             <div class="contract-title">Free Contract Screening</div>
             <div class="upload-your-contract" align="center">
                 <div class="contract-title"><?php echo $message;?></div>
